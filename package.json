@@ -1,0 +1,31 @@
+{
+  "name": "words-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srujan006/words-cli.git"
+  },
+  "keywords": [
+    "words",
+    "dict"
+  ],
+  "author": "srujan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srujan006/words-cli/issues"
+  },
+  "homepage": "https://github.com/srujan006/words-cli#readme",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "clear": "^0.1.0",
+    "commander": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.0.1",
+    "request": "^2.88.0"
+  }
+}
