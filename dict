@@ -119,33 +119,7 @@ program
       try {
         let word = await words.getRandomWord();
         console.log(chalk.red.bold("\nWord of the day  "),word);
-
-        Promise.all([words.getDefinition(word),words.getSimilarWords("all", word),words.getExamples(word)])
-            .then((results)=>{
-              const definitions = results[0];
-
-              console.log(chalk.yellow.bold("\nMeanings"));
-              definitions.forEach((o, i) =>
-                console.log("\n" + (i + 1) + ". " + o.text)
-              );
-              console.log(chalk.yellow.bold("\nsynonyms"));
-
-              let synonyms = results[1].filter(o => o.relationshipType == "synonym");
-              synonyms.length && synonyms[0].words.forEach(o => console.log(o));
-              console.log(chalk.yellow.bold("\nantonyms"));
-
-              let antonyms = results[1].filter(o => o.relationshipType == "antonym");
-              antonyms.length && antonyms[0].words.forEach(o => console.log(o));
-
-              let getExamples = results[2];
-
-              console.log(chalk.yellow.bold("\nUsage examples"));
-              getExamples.examples.forEach((o, i) =>
-                console.log("\n" + (i + 1) + ". " + o.text)
-              );
-            })
-            .catch(e=>{console.log(e)})
-
+        words.getAll(word);
       } catch (e) {
         console.log(chalk.yellow("Error while retrieving word"));
       }
@@ -158,33 +132,7 @@ program
       .action(async word => {
         try {
           console.log(chalk.red.bold("\nWord "),word);
-
-
-          Promise.all([words.getDefinition(word),words.getSimilarWords("all", word),words.getExamples(word)])
-              .then((results)=>{
-                const definitions = results[0];
-
-                console.log(chalk.yellow.bold("\nMeanings"));
-                definitions.forEach((o, i) =>
-                  console.log("\n" + (i + 1) + ". " + o.text)
-                );
-                console.log(chalk.yellow.bold("\nsynonyms"));
-
-                let synonyms = results[1].filter(o => o.relationshipType == "synonym");
-                synonyms.length && synonyms[0].words.forEach(o => console.log(o));
-                console.log(chalk.yellow.bold("\nantonyms"));
-
-                let antonyms = results[1].filter(o => o.relationshipType == "antonym");
-                antonyms.length && antonyms[0].words.forEach(o => console.log(o));
-
-                let getExamples = results[2];
-
-                console.log(chalk.yellow.bold("\nUsage examples"));
-                getExamples.examples.forEach((o, i) =>
-                  console.log("\n" + (i + 1) + ". " + o.text)
-                );
-              })
-              .catch(e=>{console.log(e)})
+          words.getAll(word);
 
         } catch (e) {
           console.log(chalk.yellow("Error while retrieving word"));
